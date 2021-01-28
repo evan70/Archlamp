@@ -1,0 +1,34 @@
+#!/bin/bash
+
+FILE=/$HOME/Archlamp/up
+FILE1=$HOME/Archlamp/down
+# This is for Arch or its distros
+# ./server up: starts up Lamp server
+if [ $1 = up ] 
+ then
+	systemctl start httpd && systemctl enable httpd
+	systemctl start mysql && systemctl enable mysql 0&1> up
+	 
+	if [ -f $FILE ];then
+ 	     	echo " Lamp server up"
+	else
+		echo "something didn't work"
+	fi
+
+# ./server down: closes Lamp server              
+elif [ $1 = down ] 
+ then
+	systemctl stop httpd && systemctl disable httpd
+	systemctl stop mysql && systemctl disable mysql 0&1> down
+
+      	
+	if [ -f $FILE1 ];then
+                echo "Lamp server down"
+	else
+		echo "Something didn't work"
+	fi
+
+else 
+	echo "invald option"
+fi
+ exit
