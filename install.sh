@@ -4,7 +4,7 @@
 #get the necessary rpms for Lamp server
 sudo pacman -S mysql apache php php-apache
 #allow service http & https
-
+APP=$HOME/Archlamp/Appendthis
 #start httpd
  sudo systemctl start httpd 
 
@@ -18,7 +18,7 @@ echo ""
 echo ""
 #temporarely stops httpd/mariadb and redirects success input into success file
 
-Appendthis >> /etc/httpd/conf/httpd.conf
+$APP >> /etc/httpd/conf/httpd.conf
 
  sudo systemctl stop httpd
  sudo systemctl stop mariadb 0>> /home/success
